@@ -1,0 +1,59 @@
+<form (ngSubmit)="submitForm(myForm)" [formGroup]="myForm" class="w-50 m-auto p-3 bg my-3">
+
+    <div class="p-3">
+    <label class="" for="user_name" >user_name</label>
+    <input type="text" formControlName='user_name' class="form-control" id="user_name">
+    <div *ngIf="myForm.get('user_name')?.errors && myForm.get('user_name')?.touched" class="alert alert-danger my-2">
+        <p *ngIf="myForm.get('user_name')?.errors?.['required']" class="mb-0">user_name is required</p>
+        <p *ngIf="myForm.get('user_name')?.errors?.['minlength']" class="mb-0"> user_name  minlength is 3</p>
+        <p *ngIf="myForm.get('user_name')?.errors?.['maxlength']" class="mb-0">user_name maxlength is 15</p>
+    </div>
+    </div>
+
+    <div class="p-3">
+    <label for="email" >email</label>
+    <input type="email" formControlName='email' class="form-control" id="email">
+    <div *ngIf="myForm.get('email')?.errors && myForm.get('email')?.touched" class="alert alert-danger my-2">
+        <p *ngIf="myForm.get('email')?.errors?.['required']" class="mb-0">email is required</p>
+        <p *ngIf="myForm.get('email')?.errors?.['invalid']" class="mb-0">email invalid</p>
+    </div>
+    </div>
+
+    <div class="p-3">
+    <label for="phone_number">phone_number</label>
+    <input type="number" formControlName='phone_number' class="form-control" id="phone_number">
+    <div *ngIf="myForm.get('phone_number')?.errors && myForm.get('phone_number')?.touched" class="alert alert-danger my-2">
+        <p *ngIf="myForm.get('phone_number')?.errors?.['maxlength']" class="mb-0">phone number length is less than 11 number</p>
+    </div>
+    </div>
+
+    <div class="p-3">
+    <label for="address">address</label>
+    <input type="text" formControlName='address' class="form-control" id="address">
+    <div *ngIf="myForm.get('address')?.errors && myForm.get('address')?.touched" class="alert alert-danger my-2">
+        <p *ngIf="myForm.get('address')?.errors?.['required']" class="mb-0">address is required</p>
+    </div>
+    </div>
+
+    <div class="p-3">
+    <label for="required_wet_quantity">required_wet_quantity</label>
+    <input type="number" formControlName='required_wet_quantity' class="form-control" id="required_wet_quantity">
+    <div *ngIf="myForm.get('required_wet_quantity')?.errors && myForm.get('required_wet_quantity')?.touched" class="alert alert-danger my-2">
+        <p *ngIf="myForm.get('required_wet_quantity')?.errors?.['required'] " class="mb-0">required_wet_quantity is required </p>
+        <p *ngIf="myForm.get('required_wet_quantity')?.errors?.['max']" class="mb-0">required_wet_quantity less than 15</p>
+    </div>
+    </div>
+
+    <div class="p-3">
+    <label for="required_dry_quantity">required_dry_quantity</label>
+    <input type="number" formControlName='required_dry_quantity' class="form-control" id="required_dry_quantity">
+    <div *ngIf="myForm.get('required_dry_quantity')?.errors && myForm.get('required_dry_quantity')?.touched" class="alert alert-danger my-2">
+        <p *ngIf="myForm.get('required_dry_quantity')?.errors?.['required'] " class="mb-0">required_dry_quantity is required </p>
+        <p *ngIf="myForm.get('required_dry_quantity')?.errors?.['max']" class="mb-0">required_dry_quantity less than 15</p>
+
+    </div>
+    </div>
+
+    <button routerLink="/success" [disabled]="myForm.invalid" type="submit" class="btn btn-success m-3">Buy now</button>
+
+</form>
